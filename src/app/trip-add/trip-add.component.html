@@ -1,0 +1,41 @@
+<div class="form-container">
+    <h2>Dodaj nową wycieczkę</h2>
+    <form [formGroup]="tripAddForm">
+        <div>
+          <label>Nazwa wycieczki: </label>
+          <input name="tripName" formControlName="tripName">
+        </div>        
+        <div>
+          <label>Kraj: </label>
+          <input name="tripCountry" formControlName="tripCountry">
+        </div>      
+        <div>
+          <label>Data rozpoczęcia: </label>
+          <input type="date" min="{{todayFormated}}" name="tripStartDate" formControlName="tripStartDate">
+        </div>      
+        <div>
+          <label>Data zakończenia: </label>
+          <input type="date" min="{{todayFormated}}" name="tripEndDate" formControlName="tripEndDate">
+        </div>      
+        <div>
+          <label>Cena: </label>
+          <input name="tripPrice" formControlName="tripPrice">
+        </div>      
+        <div>
+          <label>Liczba miejsc: </label>
+          <input name="tripQuantity" formControlName="tripQuantity">
+        </div>      
+        <div>
+          <label>Opis: </label>
+          <input name="tripDescription" formControlName="tripDescription">
+        </div>      
+        <div>
+          <label>Ścieżka do zdjęcia: </label>
+          <input name="tripImageLink" formControlName="tripImageLink">
+        </div>
+
+        <button type="submit" (click)="submitForm()">DODAJ</button>
+        <p *ngIf="showError">Wprowadź poprawne dane!</p>
+        <p *ngIf="showOk">Dodano nową wycieczkę!</p>
+      </form>
+</div>

@@ -1,0 +1,23 @@
+<h1>Lista zakupionych wycieczek</h1>
+<h2>Filtry</h2>
+<div class="checkbox">
+    <ul>
+        <li *ngFor="let status of ['przed', 'w trakcie', 'zakończona']">
+            <input type="checkbox" value="{{ status }}" checked (change)="onChangeStatus($event)" (change)="onFilterStatus()"> {{ status }}
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div class="trip-element" *ngFor="let trip of boughtTripsFiltred">
+        <div class="trip-info">
+            <p> <b> {{ trip.name }} </b> </p>
+            <p> {{ trip.startDate }} </p>
+            <p>➜</p>
+            <p> {{ trip.endDate }} </p>
+            <p> Liczba zarezerwowanych miejsc: {{ trip.amount }} </p>
+            <p> Data rezerwacji: {{ trip.buyDate }} </p>
+            <p> Cena wycieczki: {{ trip.price }} {{trip.currency}} </p>
+            <p> Status: {{ trip.status }} </p>
+        </div>
+    </div>
+</div>

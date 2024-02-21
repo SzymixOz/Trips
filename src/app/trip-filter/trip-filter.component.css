@@ -1,0 +1,29 @@
+.container {
+    text-align: center;
+}
+
+img, .stars {
+    display: inline;
+    width: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+input.stars {
+    margin-right: 10px;
+}
+
+input[type="date"] {
+    margin: 5px 10px;
+}
+
+button {
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(153, 98, 36);
+    cursor: pointer;
+}

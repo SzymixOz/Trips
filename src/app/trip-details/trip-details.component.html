@@ -1,0 +1,77 @@
+<div class="back-button">
+    <a routerLink="/trips">Powrót do wycieczek</a>
+</div>
+
+<div class="container" *ngIf="trip">
+        <img src="{{ photoSrc }}">
+        <div class="photoselect">
+            <span class="photo-button" (click)="nextPhoto()">
+                <img src="../assets/left.png" alt="" />
+            </span>
+            <span class="photo-button" (click)="previousPhoto()">
+                <img src="../assets/right.png" alt="" />
+            </span>
+        </div>
+        <h3> {{ trip.name | uppercase }} </h3>
+        <p class="tripInfo">Kraj: {{trip.country | uppercase}} </p>
+        <p class="tripInfo">Data rozpoczęcia: {{ trip.startDate }} </p>
+        <p class="tripInfo">Data zakończenia: {{ trip.endDate }} </p>
+        <p class="tripDes">{{ trip.description }}</p>
+
+        <div class="card-bottom">
+            <p *ngIf="trip.quantity - trip.amount > 0">
+                Pozostało {{ trip.quantity - trip.amount }} miejsc.
+            </p>
+            <p *ngIf="trip.quantity - trip.amount == 0" style="font-size: larger;">
+                Brak wolnych miejsc!
+            </p>
+            <div>
+                <ng-container *ngIf="trip.quantity > trip.amount; else elseBlockA">
+                    <div class="button" (click)="addClick(trip)">➕</div>
+                </ng-container>
+                <ng-template #elseBlockA>
+                    <div style="width: 22px;"></div>
+                </ng-template>
+
+                <div> {{ trip.amount }} </div>
+
+                <ng-container *ngIf="trip.amount > 0; else elseBlockR">
+                    <div class="button" (click)="removeClick(trip)">➖</div>
+                </ng-container>
+                <ng-template #elseBlockR>
+                    <div style="width: 22px;"></div>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="card-bottom">
+            <div class="price"> {{ trip.price }} {{trip.currency}} </div>
+            <button class="add-trip" (click)="addToBusket(trip)">ADD trip</button>
+        </div>
+
+        <div class="card-bottom">
+            <app-trip-rating [amountPoints]="trip.points" [amountVote]="trip.voters" [id]="trip.id" (ratingChanged)="updateRating($event, trip)"></app-trip-rating>
+            <button routerLink="/trips" class="remove-trip" (click)="removeTrip(trip)">REMOVE</button>
+        </div>
+
+        <h1>Recenzje</h1>
+        <div class="review" *ngFor="let review of reviews">
+            <div>
+                <p><b>Użytkownik: </b></p>
+                <p> {{review.nick}} </p>
+            </div>
+            <div>
+                <p><b>Wycieczka: </b></p>
+                <p> {{review.tripName}} </p>
+            </div>
+            <div>
+                <p><b>Data: </b></p>
+                <p> {{review.date}} </p>
+            </div>
+            <div>
+                <p><b>Treść: </b></p>
+                <p> {{review.review}} </p>
+            </div>
+        </div>
+        <app-trip-review [id]="trip.id" (newReviewEvent)="addReview($event)"></app-trip-review>
+</div>

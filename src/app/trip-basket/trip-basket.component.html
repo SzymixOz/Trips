@@ -1,0 +1,19 @@
+<div class="container">
+    <img src="./assets/shopping-cart.png">
+</div>
+<div class="basket">
+    <div class="trip-element" *ngFor="let basketTrip of basket">
+        <div class="trip-info">
+            <p> <b> {{ basketTrip.name }} </b> </p>
+            <p> {{ basketTrip.startDate }} </p>
+            <p>➜</p>
+            <p> {{ basketTrip.endDate }} </p>
+            <p> Liczba zarezerwowanych miejsc: {{ basketTrip.amount }} </p>
+            <p> Cena wycieczki: {{ basketTrip.price * basketTrip.amount }} {{basketTrip.currency}} </p>
+        </div>
+        <div class="trip-button">
+            <button class="remove-trip" (click)="removeTrip(basketTrip)">REMOVE</button>
+            <button class="buy-trip" (click)="buyTrip(basketTrip)">BUY</button>
+        </div>
+    </div>
+</div>

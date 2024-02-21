@@ -1,0 +1,19 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+form > div {
+    margin: 10px 5px;
+}
+
+label {
+    font-size: 18px;
+}
+
+button {
+    padding: 5px 8px;
+    margin: 5px;
+    cursor: pointer;
+}

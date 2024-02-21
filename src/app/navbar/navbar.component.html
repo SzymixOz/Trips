@@ -1,0 +1,66 @@
+<div class="container">
+    <div>
+        <a *ngIf="auth.userData != null">
+            <div class="button" id="hello">
+                Witaj {{auth.userData.email}}
+            </div>
+        </a>
+        <a routerLink="/">
+            <div class="button" routerLinkActive="active-link" [routerLinkActiveOptions] = "{exact:true}">
+                Strona główna
+            </div>
+        </a>
+        <a routerLink="/trips">
+            <div class="button" routerLinkActive="active-link">
+                Oferta wycieczek
+            </div>
+        </a>
+        <a routerLink="/basket" *ngIf="auth.userData != null">
+            <div class="button" routerLinkActive="active-link">
+                Koszyk
+            </div>
+        </a>
+        <a routerLink="/history" *ngIf="auth.userData != null">
+            <div class="button">
+                Historia wycieczek
+            </div>
+        </a>
+        <a routerLink="/admin" *ngIf="auth.userRoles.admin">
+            <div class="button" routerLinkActive="active-link">
+                Panel administratora
+            </div>
+        </a>
+        <a routerLink="/menager" *ngIf="auth.userRoles.menager">
+            <div class="button" routerLinkActive="active-link">
+                Panel menagera
+            </div>
+        </a>
+        <a routerLink="/register" *ngIf="auth.userData == null">
+            <div class="button"  routerLinkActive="active-link">
+                Zarejestruj
+            </div>
+        </a>
+        <a routerLink="/login" *ngIf="auth.userData == null">
+            <div class="button" routerLinkActive="active-link">
+                Zaloguj
+            </div>
+        </a>
+        <a>
+            <div class="button" *ngIf="auth.userData != null" (click)="auth.signOut()">
+                Wyloguj
+            </div>
+        </a>
+    </div>
+
+    <div class="info" *ngIf="auth.userData != null">
+        <div>Liczba wycieczek w koszyku: {{ numberOfTrips }} </div>
+        <div>Liczba wszystkich miejsc: {{ numberOfPlaces }} </div>
+    </div>
+    <div *ngIf="auth.userData != null">
+        <div *ngFor="let trip of boughtTrips">
+            <div routerLink="/history" class="notice" *ngIf="trip.startDate < nextWeekFormated && trip.startDate > todayFormated">
+                ❗
+            </div>
+        </div>
+    </div>
+</div>

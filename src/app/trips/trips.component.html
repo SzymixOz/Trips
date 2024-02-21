@@ -1,0 +1,61 @@
+<div class="header">
+    <app-trip-filter [trips]="tripsData" (filterEvent)="filterEventHandler($event)"></app-trip-filter>
+</div>
+<div class="container">
+    <div class="trip" *ngFor="let trip of filtredTripsData" 
+        [ngStyle]="{'border' : getBorder(trip), 'background-color' : getBackGround(trip)}">
+
+        <img src="{{ trip.imageLink[0] }}" routerLink="/trips/{{trip.id}}">
+        <h3>{{ trip.name | uppercase }}</h3>
+        <p class="tripInfo">Kraj: {{trip.country | uppercase}} </p>
+        <p class="tripInfo">Data rozpoczęcia: {{ trip.startDate }} </p>
+        <p class="tripInfo">Data zakończenia: {{ trip.endDate }} </p>
+        <!-- <p class="tripDes">{{ trip.description }}</p> -->
+
+        <div class="card-bottom">
+            <p *ngIf="trip.quantity - trip.amount > 0">
+                Pozostało {{ trip.quantity - trip.amount }} miejsc.
+            </p>
+            <p *ngIf="trip.quantity - trip.amount == 0" style="font-size: larger;">
+                Brak wolnych miejsc!
+            </p>
+            <div>
+                <ng-container *ngIf="trip.quantity > trip.amount; else elseBlockA">
+                    <div class="button" (click)="addClick(trip)">➕</div>
+                </ng-container>
+                <ng-template #elseBlockA>
+                    <div style="width: 22px;"></div>
+                </ng-template>
+
+                <div> {{ trip.amount }} </div>
+
+                <ng-container *ngIf="trip.amount > 0; else elseBlockR">
+                    <div class="button" (click)="removeClick(trip)">➖</div>
+                </ng-container>
+                <ng-template #elseBlockR>
+                    <div style="width: 22px;"></div>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="card-bottom">
+            <div class="price"> {{ trip.price }} {{trip.currency}} </div>
+            <button class="addTrip" (click)="addToBusket(trip)">ADD TRIP</button>
+        </div>
+
+        <div class="card-bottom">
+            <div class="rate">
+                <div *ngFor="let number of [1, 2, 3, 4, 5]">
+                    <img #number [src]="trip.points / trip.voters >= number ? '/assets/star-full.png' : '/assets/star-empty.png'">
+                </div>
+                <p> {{ trip.points / trip.voters | number: "1.2-2" }}</p>
+            </div>
+            <button class="remove-trip" (click)="removeTrip(trip)">REMOVE</button>
+        </div>
+        <div>
+            <a routerLink="/trips/{{trip.id}}">
+                <h3>Więcej szczegółów</h3>
+            </a>
+        </div>
+    </div>
+</div>

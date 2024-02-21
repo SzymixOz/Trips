@@ -1,0 +1,10 @@
+<div class="rate">
+    <div *ngFor="let number of [1, 2, 3, 4, 5]">
+        <img #number [src]="imageSrc >= number ? '/assets/star-full.png' : '/assets/star-empty.png'"
+            (mouseover)="imageSrc = number"
+            (mouseout)="imageSrc = this.amountPoints / this.amountVote"
+            (click)="rattingApplied(number)">
+    </div>
+    <p> {{ this.amountPoints / this.amountVote | number: "1.2-2" }}</p>
+    <p *ngIf="voted"> Voted!</p>
+</div>

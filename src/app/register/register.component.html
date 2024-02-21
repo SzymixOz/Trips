@@ -1,0 +1,17 @@
+<div class="form-container">
+    <h2>Register an account</h2>
+    <form [formGroup]="regForm">
+        <div class="element">
+            <label for="name">Email</label>
+            <input id="name" type="text" formControlName="login" />
+        </div>
+    
+        <div class="element">
+            <label for="type">Password</label>
+            <input id="password" type="password" formControlName="password" />
+        </div>
+    </form>
+    <button type="submit" class="button-accent" (click)="submitForm()">Confirm</button>
+    <p *ngIf="showError">Wprowadź poprawne dane!</p>
+    <p *ngIf="showOk">Poprawnie zarejestrowano!</p>
+  </div>

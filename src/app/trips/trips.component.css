@@ -1,0 +1,102 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.header > * {
+    width: 45%;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: rgb(171, 223, 255);
+}
+
+
+.trip {
+    text-align: center;
+    box-sizing: border-box;
+    width: 400px;
+    height: 670px;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: white;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.card-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.card-bottom > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-bottom > div > div {
+    margin: 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.price {
+    font-size: 30px;
+}
+
+.addTrip, .remove-trip  {
+    width: 120px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(215, 106, 33);
+    cursor: pointer;
+}
+
+.remove-trip {
+    background-color: rgb(155, 41, 0);
+ 
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+a > h3 {
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px;
+    background-color:rgb(215, 106, 33);
+}
+
+.rate *{
+    display: inline;  
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    margin: 2px !important;
+    cursor: default;
+}
+
+.rate > p {
+    margin-left: 10px !important;
+}

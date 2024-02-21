@@ -1,0 +1,22 @@
+<h2>Dodaj opinię</h2>
+<div class="form">
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(reviewForm)">
+        <div>
+            <label for="nick"><b>Nick: </b></label>
+            <input type="text" formControlName="nick">
+        </div>
+        <div>
+            <label for="tripName"><b>Nazwa wycieczki: </b></label>
+            <input type="text" formControlName="tripName">
+        </div>
+        <div>
+            <label for="date"><b>Data: </b></label>
+            <input type="date" formControlName="date">
+        </div>
+        <div>
+            <label for="review"><b>Opinia: </b></label>
+            <textarea cols="60" rows="10" type="text" formControlName="review"></textarea>
+        </div>
+        <button type="submit">Dodaj opinię</button>
+    </form>
+</div>

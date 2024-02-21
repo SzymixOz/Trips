@@ -1,0 +1,22 @@
+<h1>Panel menagera</h1>
+<div class="container" *ngIf="auth.userRoles?.menager == true">
+    <div class="center" *ngIf="trips != null">
+        <h2>Zarządzaj wycieczkami</h2>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa</th>
+                <th>Opcje</th>
+            </tr>
+            <tr *ngFor="let trip of trips">
+                <td>{{ trip.id }}</td>
+                <td>{{ trip.name }}</td>
+                <td>
+                    <button (click)="deleteTrip(trip.id)">USUŃ</button>
+                    <button routerLink="modify/{{trip.id}}">MODYFIKUJ</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <app-trip-add></app-trip-add>
+</div>

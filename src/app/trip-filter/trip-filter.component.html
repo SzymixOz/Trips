@@ -1,0 +1,26 @@
+<div class="container" >
+    <button (click)="uniqueCountry()" (click)="open()">Filtry</button>
+    <div *ngIf="openFilters">
+        <div class="checkbox">
+            <ul>
+                <li *ngFor="let country of countriesArray">
+                    <input type="checkbox" value="{{ country }}" checked (change)="onChangeCountry($event)" (change)="onFilterRange()"> {{ country }}
+                </li>
+            </ul>
+        </div>
+        <div class="checkbox">
+            <ul>
+                <li *ngFor="let number of [1, 2, 3, 4, 5]">
+                    <input class="stars" type="checkbox" value="{{ number }}" checked (change)="onChangeRating($event)" (change)="onFilterRange()">
+                    <div class="stars" *ngFor="let number2 of [1, 2, 3, 4, 5]">
+                        <img [src]="number >= number2 ? '/assets/star-full.png' : '/assets/star-empty.png'">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <input type="date" (change)="onChangeStartDate($event)" (change)="onFilterRange()">
+        <input type="date" (change)="onChangeEndDate($event)" (change)="onFilterRange()">
+        <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options" 
+            (valueChange)="onFilterRange()" (highValueChange)="onFilterRange()"></ngx-slider>
+    </div>
+</div>
